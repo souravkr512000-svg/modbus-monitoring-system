@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3001');
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const socket = io(API_URL);
 
 function DeviceDetail({ device, onBack }) {
   const [deviceData, setDeviceData] = useState(null);
@@ -10,7 +11,7 @@ function DeviceDetail({ device, onBack }) {
 
   useEffect(() => {
     // Fetch full device data
-    axios.get(`http://localhost:3001/api/devices/${device.id}`)
+    axios.get(`${API_URL}/api/devices/${device.id}`)
       .then(response => {
         setDeviceData(response.data);
       })

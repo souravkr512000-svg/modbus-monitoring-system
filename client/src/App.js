@@ -7,7 +7,8 @@ import DeviceDetail from './components/DeviceDetail';
 import AlarmPanel from './components/AlarmPanel';
 import NetworkTopology from './components/NetworkTopology';
 
-const socket = io('http://localhost:3001');
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const socket = io(API_URL);
 
 function App() {
   const [devices, setDevices] = useState([]);
@@ -17,7 +18,7 @@ function App() {
 
   useEffect(() => {
     // Fetch initial device list
-    axios.get('http://localhost:3001/api/devices')
+    axios.get(`${API_URL}/api/devices`)
       .then(response => {
         setDevices(response.data);
       })
