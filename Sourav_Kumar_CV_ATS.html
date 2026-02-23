@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sourav Kumar - Software Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #000;
+            background: #fff;
+            padding: 40px 50px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 24pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .header .title {
+            font-size: 14pt;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .contact-row {
+            font-size: 10pt;
+            color: #333;
+        }
+        
+        .contact-row span {
+            margin: 0 10px;
+        }
+        
+        .contact-row a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        /* Summary */
+        .summary {
+            text-align: justify;
+            font-size: 10.5pt;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 5px 15px;
+            font-size: 10.5pt;
+        }
+        
+        .skill-label {
+            font-weight: 600;
+        }
+        
+        .skill-value {
+            color: #333;
+        }
+        
+        /* Experience */
+        .job {
+            margin-bottom: 15px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+        
+        .job-left {
+            flex: 1;
+        }
+        
+        .company {
+            font-size: 11pt;
+            font-weight: bold;
+        }
+        
+        .job-title {
+            font-size: 10.5pt;
+            font-style: italic;
+        }
+        
+        .duration {
+            font-size: 10pt;
+            color: #333;
+            text-align: right;
+            white-space: nowrap;
+        }
+        
+        .job ul {
+            margin-left: 20px;
+            font-size: 10.5pt;
+        }
+        
+        .job li {
+            margin-bottom: 3px;
+            text-align: justify;
+        }
+        
+        /* Projects */
+        .project {
+            margin-bottom: 12px;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+        
+        .project-name {
+            font-weight: bold;
+            font-size: 10.5pt;
+        }
+        
+        .project-tech {
+            font-size: 10pt;
+            color: #333;
+            font-style: italic;
+        }
+        
+        .project p {
+            font-size: 10.5pt;
+            margin-bottom: 3px;
+        }
+        
+        .project ul {
+            margin-left: 20px;
+            font-size: 10.5pt;
+        }
+        
+        .project li {
+            margin-bottom: 2px;
+        }
+        
+        /* Education & Certifications */
+        .edu-item, .cert-item {
+            margin-bottom: 5px;
+            font-size: 10.5pt;
+        }
+        
+        .edu-item strong, .cert-item strong {
+            font-weight: 600;
+        }
+        
+        /* Page Break */
+        .page-break {
+            page-break-before: always;
+            margin-top: 40px;
+        }
+        
+        @media print {
+            body {
+                padding: 30px 40px;
+            }
+            
+            .page-break {
+                page-break-before: always;
+                margin-top: 0;
+                padding-top: 30px;
+            }
+        }
+        
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Sourav Kumar</h1>
+        <div class="title">Software Developer | ASP.NET Core | Full Stack Development</div>
+        <div class="contact-row">
+            <span>+91 7992253299</span> |
+            <span>souravkr512000@gmail.com</span> |
+            <span><a href="https://www.linkedin.com/in/sourav-kumar-297b16197">LinkedIn Profile</a></span>
+        </div>
+    </div>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <p class="summary">
+            Results-driven Software Developer with 4+ years of experience in designing, developing, testing, and maintaining software applications. Proficient in ASP.NET Core, C#, MVC, SQL Server, and full-stack development. Strong expertise in Software Development Life Cycle (SDLC), CI/CD pipelines, Azure cloud deployment, and quality assurance. Proven ability to analyze client requirements, perform root cause analysis, and deliver error-free solutions. Skilled in collaborating with cross-functional teams, preparing technical documentation, and ensuring 100% on-time delivery with high customer satisfaction.
+        </p>
+    </div>
+
+    <!-- TECHNICAL SKILLS -->
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+            <span class="skill-label">Programming:</span>
+            <span class="skill-value">C#, ASP.NET Core, VB.NET, Python, JavaScript, PHP, C++</span>
+            
+            <span class="skill-label">Web Technologies:</span>
+            <span class="skill-value">ASP.NET MVC, Angular, HTML5, CSS3, REST APIs, Web Services</span>
+            
+            <span class="skill-label">Database:</span>
+            <span class="skill-value">SQL Server, Oracle, MySQL, DB2, Stored Procedures, Query Optimization</span>
+            
+            <span class="skill-label">Tools & DevOps:</span>
+            <span class="skill-value">Visual Studio, Git, GitHub, Jenkins, Azure DevOps, CI/CD Pipelines</span>
+            
+            <span class="skill-label">Cloud Platform:</span>
+            <span class="skill-value">Microsoft Azure (Deployment, Configuration, Monitoring)</span>
+            
+            <span class="skill-label">Methodologies:</span>
+            <span class="skill-value">Agile, SDLC, Unit Testing, Integration Testing, Code Review</span>
+            
+            <span class="skill-label">Industrial:</span>
+            <span class="skill-value">PLC/SCADA, Modbus TCP/RTU, IEC 61850, IoT, SAP-PM</span>
+        </div>
+    </div>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <div class="section">
+        <div class="section-title">Professional Experience</div>
+        
+        <div class="job">
+            <div class="job-header">
+                <div class="job-left">
+                    <div class="company">Rugged Monitoring Engineering Services</div>
+                    <div class="job-title">Software Application Engineer</div>
+                </div>
+                <div class="duration">Oct 2024 – Present</div>
+            </div>
+            <ul>
+                <li>Design and develop software solutions by studying information needs, analyzing system flow, data usage, and work processes following SDLC methodology.</li>
+                <li>Develop and maintain automation tools using C# and Python, achieving 40% reduction in deployment time.</li>
+                <li>Implement CI/CD pipelines using Jenkins and GitHub ensuring 100% error-free deployment and continuous monitoring.</li>
+                <li>Deploy and configure cloud-based solutions on Microsoft Azure platform with network parameter optimization.</li>
+                <li>Perform comprehensive software validation through systematic test case design and execution.</li>
+                <li>Conduct root cause analysis for system issues and implement long-term corrective solutions.</li>
+                <li>Execute functional testing of industrial communication protocols (Modbus TCP/RTU, IEC 61850).</li>
+                <li>Prepare technical documentation including flowcharts, system diagrams, and code comments.</li>
+                <li>Collaborate with cross-functional teams to gather requirements and deliver client-focused solutions.</li>
+            </ul>
+        </div>
+        
+        <div class="job">
+            <div class="job-header">
+                <div class="job-left">
+                    <div class="company">Amalgam Steel Pvt. Ltd., Jamshedpur</div>
+                    <div class="job-title">Electrical and Automation Engineer</div>
+                </div>
+                <div class="duration">Dec 2022 – Sep 2024</div>
+            </div>
+            <ul>
+                <li>Led shift operations and supervised electrical maintenance activities in Pellet Plant ensuring operational efficiency.</li>
+                <li>Developed automation scripts and software tools for system monitoring and performance tracking.</li>
+                <li>Performed Root Cause Analysis (RCA) for electrical and instrumentation breakdowns; implemented corrective actions.</li>
+                <li>Utilized SAP-PM module for planning, tracking, and documentation of maintenance tasks.</li>
+                <li>Created automated reporting systems and dashboards for real-time performance monitoring.</li>
+                <li>Scheduled and executed preventive and predictive maintenance to minimize system downtime.</li>
+                <li>Ensured 100% timely MIS and report generation with complete accuracy.</li>
+            </ul>
+        </div>
+        
+        <div class="job">
+            <div class="job-header">
+                <div class="job-left">
+                    <div class="company">JSW ISPL, Raigarh</div>
+                    <div class="job-title">Junior Engineer - Central Utility</div>
+                </div>
+                <div class="duration">Feb 2022 – Dec 2022</div>
+            </div>
+            <ul>
+                <li>Collaborated with automation and IT teams for real-time monitoring using SCADA systems and IoT dashboards.</li>
+                <li>Developed Excel-based dashboards and integrated with CMMS tools for equipment performance tracking.</li>
+                <li>Monitored energy consumption patterns and optimized load distribution improving operational efficiency.</li>
+                <li>Participated in digital transformation initiatives including equipment tagging and KPI reporting systems.</li>
+                <li>Maintained comprehensive documentation and reports for software implementations.</li>
+            </ul>
+        </div>
+        
+        <div class="job">
+            <div class="job-header">
+                <div class="job-left">
+                    <div class="company">JSW ISPL, Raigarh</div>
+                    <div class="job-title">Diploma Engineer Trainee (DET)</div>
+                </div>
+                <div class="duration">Feb 2021 – Feb 2022</div>
+            </div>
+            <ul>
+                <li>Gained hands-on experience with PLC-based control systems, HMI operations, and fault diagnostic tools.</li>
+                <li>Supported digital maintenance records and asset tracking through internal software tools.</li>
+                <li>Assisted in software validation, testing procedures, and system troubleshooting.</li>
+                <li>Developed understanding of electrical schematics, control diagrams, and digital instrumentation interfaces.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page-break">
+    
+    <!-- KEY PROJECTS -->
+    <div class="section">
+        <div class="section-title">Key Projects</div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">1. Remote Monitoring Solution Deployment Platform</span>
+                <span class="project-tech">C#, ASP.NET Core, Azure, SQL Server</span>
+            </div>
+            <ul>
+                <li>Designed and developed a web-based platform for deploying and managing remote monitoring solutions across multiple client environments.</li>
+                <li>Implemented RESTful APIs using ASP.NET Core for real-time data communication between field devices and central server.</li>
+                <li>Integrated Azure cloud services for scalable deployment, storage, and monitoring capabilities.</li>
+                <li>Developed automated validation scripts reducing deployment errors by 95% and deployment time by 40%.</li>
+                <li>Created comprehensive dashboard for system health monitoring and alert management.</li>
+            </ul>
+        </div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">2. Industrial Protocol Testing Automation Framework</span>
+                <span class="project-tech">Python, C#, Modbus, IEC 61850</span>
+            </div>
+            <ul>
+                <li>Built an automated testing framework for validating industrial communication protocols (Modbus TCP/RTU, IEC 61850).</li>
+                <li>Developed test case management system with systematic test scenario design and execution tracking.</li>
+                <li>Implemented automated report generation with detailed test results and error analysis.</li>
+                <li>Reduced manual testing effort by 60% while improving test coverage and accuracy.</li>
+            </ul>
+        </div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">3. Plant Maintenance Management System</span>
+                <span class="project-tech">ASP.NET MVC, SQL Server, SAP Integration</span>
+            </div>
+            <ul>
+                <li>Developed web application for tracking and managing preventive/predictive maintenance schedules.</li>
+                <li>Integrated with SAP-PM module for seamless data synchronization and reporting.</li>
+                <li>Implemented automated notification system for maintenance alerts and escalations.</li>
+                <li>Created MIS reporting module generating 100% accurate and timely reports for management review.</li>
+            </ul>
+        </div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">4. Real-Time Equipment Monitoring Dashboard</span>
+                <span class="project-tech">Angular, C#, SQL Server, SCADA Integration</span>
+            </div>
+            <ul>
+                <li>Designed and developed real-time monitoring dashboard for utility equipment performance tracking.</li>
+                <li>Integrated with SCADA systems and IoT sensors for live data acquisition and visualization.</li>
+                <li>Implemented KPI tracking, trend analysis, and energy consumption optimization features.</li>
+                <li>Reduced equipment downtime by 25% through proactive monitoring and alert systems.</li>
+            </ul>
+        </div>
+        
+        <div class="project">
+            <div class="project-header">
+                <span class="project-name">5. CI/CD Pipeline Implementation for Software Deployment</span>
+                <span class="project-tech">Jenkins, GitHub, Azure DevOps, PowerShell</span>
+            </div>
+            <ul>
+                <li>Designed and implemented end-to-end CI/CD pipeline for automated build, test, and deployment processes.</li>
+                <li>Configured Jenkins jobs for continuous integration with GitHub repository triggers.</li>
+                <li>Developed automated deployment scripts for Azure cloud environment configuration.</li>
+                <li>Achieved 100% error-free deployment with automated rollback capabilities.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="edu-item">
+            <strong>Diploma in Electrical Engineering</strong><br>
+            <em>(Add Institution Name and Year of Completion)</em>
+        </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section">
+        <div class="section-title">Certifications</div>
+        <div class="cert-item">• Microsoft Azure Fundamentals - Cloud Services and Deployment</div>
+        <div class="cert-item">• Python for Engineers - Programming and Automation</div>
+        <div class="cert-item">• Industrial Automation with PLC & SCADA - System Integration</div>
+        <div class="cert-item">• IoT Certification - Connected Systems and Applications</div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="section">
+        <div class="section-title">Achievements & Awards</div>
+        <div class="cert-item">• Received INSTA Award for outstanding performance and project delivery</div>
+        <div class="cert-item">• Awarded Performance Badges for consistent quality and timely delivery</div>
+        <div class="cert-item">• Recognized with Client Appreciation for excellent customer service and communication</div>
+    </div>
+
+    <!-- KEY COMPETENCIES -->
+    <div class="section">
+        <div class="section-title">Key Competencies</div>
+        <p class="summary">
+            Software Development Life Cycle (SDLC) • Requirements Analysis • System Design • Code Development • Unit Testing • Integration Testing • Quality Assurance • Root Cause Analysis • Technical Documentation • CI/CD Implementation • Azure Cloud Deployment • Client Communication • Agile Methodologies • MIS Reporting • Cross-functional Collaboration • Problem Solving
+        </p>
+    </div>
+
+    </div>
+
+</body>
+</html>
