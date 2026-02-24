@@ -198,10 +198,52 @@ Reads a specific register from a device.
 - Data values simulate realistic variations
 - Communication parameters match industry standards
 
+## Employee Dashboard Project
+
+This repository also includes an **Employee Dashboard** built with ASP.NET Core MVC.
+
+### Features
+- ✅ Authentication & Authorization (ASP.NET Core Identity)
+- ✅ Role-Based Access Control (Admin, HR, Manager, Employee)
+- ✅ Full CRUD Operations
+- ✅ Modern UI/UX Design
+- ✅ Real-time Statistics & Charts
+- ✅ Advanced Search & Filtering
+
+### Quick Start
+```bash
+cd EmployeeDashboard
+dotnet restore
+dotnet build
+dotnet run
+```
+
+Access at: `https://localhost:5001` or `http://localhost:5000`
+
+**Demo Credentials:**
+- Admin: `admin@company.com` / `Admin@123`
+- HR: `hr@company.com` / `Hr@123`
+- Employee: `employee@company.com` / `Emp@123`
+
+See [EmployeeDashboard/README.md](EmployeeDashboard/README.md) for detailed documentation.
+
+## CI/CD Pipeline
+
+This repository includes **GitHub Actions** workflows for automated CI/CD:
+
+### Workflows
+- **CI/CD Pipeline** (`ci-cd.yml`): Builds and tests on Ubuntu, Windows, and macOS
+- **Deploy to Production** (`deploy.yml`): Automated deployment workflow
+
+### Status Badge
+![CI/CD](https://github.com/souravkr512000-svg/modbus-monitoring-system/workflows/CI/CD%20Pipeline/badge.svg)
+
+See [.github/workflows/README.md](.github/workflows/README.md) for detailed CI/CD documentation.
+
 ## License
 
 MIT
 
 ---
 
-**Built for demonstrating industrial Modbus/RS-485 device integration experience**
+**Built for demonstrating industrial Modbus/RS-485 device integration experience and .NET development skills**

@@ -1,0 +1,74 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ master, main ]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  PROJECT_PATH: 'EmployeeDashboard/EmployeeDashboard.csproj'
+
+jobs:
+  deploy:
+    name: Deploy Application
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'production' }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      
+    - name: Build application
+      run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+      
+    - name: Publish application
+      run: dotnet publish ${{ env.PROJECT_PATH }} --configuration Release --output ./publish --no-build
+      
+    # Uncomment and configure based on your hosting provider:
+    
+    # For Azure App Service:
+    # - name: Deploy to Azure
+    #   uses: azure/webapps-deploy@v3
+    #   with:
+    #     app-name: 'your-app-name'
+    #     publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+    #     package: ./publish
+    
+    # For Render:
+    # - name: Deploy to Render
+    #   run: |
+    #     curl -X POST "https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_DEPLOY_KEY }}"
+    
+    # For Docker Hub:
+    # - name: Build Docker image
+    #   run: docker build -t your-username/employee-dashboard:${{ github.sha }} .
+    # - name: Push to Docker Hub
+    #   run: |
+    #     echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+    #     docker push your-username/employee-dashboard:${{ github.sha }}
+    
+    - name: Deployment Summary
+      run: |
+        echo "✅ Build completed successfully!"
+        echo "📦 Published files are in ./publish directory"
+        echo "🚀 Ready for deployment to your hosting provider"

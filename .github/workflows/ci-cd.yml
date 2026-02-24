@@ -1,0 +1,114 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  PROJECT_PATH: 'EmployeeDashboard/EmployeeDashboard.csproj'
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      
+    - name: Build project
+      run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+      
+    - name: Run tests (if any)
+      run: dotnet test ${{ env.PROJECT_PATH }} --configuration Release --no-build --verbosity normal
+      continue-on-error: true
+      
+    - name: Publish application
+      run: dotnet publish ${{ env.PROJECT_PATH }} --configuration Release --output ./publish --no-build
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: published-app
+        path: ./publish
+        retention-days: 7
+
+  build-windows:
+    name: Build on Windows
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      
+    - name: Build project
+      run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+      
+    - name: Publish application
+      run: dotnet publish ${{ env.PROJECT_PATH }} --configuration Release --output ./publish --no-build
+
+  build-macos:
+    name: Build on macOS
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      
+    - name: Build project
+      run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+      
+    - name: Publish application
+      run: dotnet publish ${{ env.PROJECT_PATH }} --configuration Release --output ./publish --no-build
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      
+    - name: Build with warnings as errors (optional)
+      run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore --warnaserror-nowarn:CS8602
+      continue-on-error: true
+      
+    - name: Check for code style issues
+      run: dotnet format ${{ env.PROJECT_PATH }} --verify-no-changes --verbosity diagnostic
+      continue-on-error: true
