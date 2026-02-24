@@ -1,12 +1,15 @@
 services:
   - type: web
-    name: modbus-monitoring-system
-    env: node
-    buildCommand: npm install && cd client && npm install && npm run build && cd ..
-    startCommand: npm start
+    name: employee-dashboard
+    env: docker
+    dockerfilePath: EmployeeDashboard/Dockerfile
+    dockerContext: EmployeeDashboard
+    dockerCommand: ""
+    plan: free
     envVars:
-      - key: NODE_ENV
-        value: production
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
       - key: PORT
         value: 10000
-    healthCheckPath: /api/devices
+    healthCheckPath: /Account/Login
+    autoDeploy: true

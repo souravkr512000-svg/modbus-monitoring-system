@@ -21,13 +21,14 @@ WORKDIR /app
 # Copy published app
 COPY --from=publish /app/publish .
 
-# Expose port
-EXPOSE 8080
-EXPOSE 8081
+# Expose port (Render uses PORT env variable)
+EXPOSE 10000
 
 # Set environment variables
-ENV ASPNETCORE_URLS=http://+:8080
+# Render will set PORT automatically, but we provide a default
+ENV ASPNETCORE_URLS=http://+:${PORT:-10000}
 ENV ASPNETCORE_ENVIRONMENT=Production
+ENV PORT=10000
 
 # Run the application
 ENTRYPOINT ["dotnet", "EmployeeDashboard.dll"]

@@ -1,0 +1,61 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  PROJECT_PATH: 'EmployeeDashboard/EmployeeDashboard.csproj'
+
+jobs:
+  deploy-render:
+    name: Build and Prepare for Render
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      
+    - name: Build application
+      run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+      
+    - name: Test build
+      run: dotnet publish ${{ env.PROJECT_PATH }} --configuration Release --output ./publish --no-build
+      
+    - name: Verify Dockerfile exists
+      run: |
+        if [ ! -f "EmployeeDashboard/Dockerfile" ]; then
+          echo "❌ Dockerfile not found!"
+          exit 1
+        fi
+        echo "✅ Dockerfile found"
+        
+    - name: Verify render.yaml exists
+      run: |
+        if [ ! -f "render.yaml" ]; then
+          echo "❌ render.yaml not found!"
+          exit 1
+        fi
+        echo "✅ render.yaml found"
+        
+    - name: Deployment Ready
+      run: |
+        echo "✅ Build completed successfully!"
+        echo "📦 Application is ready for Render deployment"
+        echo "🚀 Push to GitHub triggers Render auto-deploy (if configured)"
+        echo ""
+        echo "To deploy manually:"
+        echo "1. Go to https://render.com"
+        echo "2. Connect repository: modbus-monitoring-system"
+        echo "3. Render will auto-detect render.yaml"
+        echo "4. Click Deploy!"
