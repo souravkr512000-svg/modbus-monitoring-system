@@ -92,14 +92,14 @@ if ($LASTEXITCODE -eq 0) {
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
 if ($errors -eq 0) {
-    Write-Host "✅ All checks passed! Ready for deployment!" -ForegroundColor Green
+    Write-Host "All checks passed! Ready for deployment!" -ForegroundColor Green
     Write-Host ""
     Write-Host "Next steps:" -ForegroundColor Cyan
     Write-Host "1. Push to GitHub: git push origin master" -ForegroundColor White
     Write-Host "2. Go to https://render.com" -ForegroundColor White
     Write-Host "3. Connect repository and deploy!" -ForegroundColor White
 } else {
-    Write-Host "❌ Found $errors error(s). Please fix before deploying." -ForegroundColor Red
+    Write-Host "Found $errors error(s). Please fix before deploying." -ForegroundColor Red
 }
 Write-Host "========================================" -ForegroundColor Cyan
 
