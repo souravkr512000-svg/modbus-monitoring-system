@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
@@ -14,6 +15,11 @@ const io = socketIo(server, {
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from React app in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+}
 
 // Simulated Modbus Devices Configuration
 // Each device has: slaveId, deviceType, registers (holding/input/coils)
@@ -239,6 +245,21 @@ app.post('/api/devices/:id/read-register', (req, res) => {
   });
 });
 
+// Serve React app in production
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from React app
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  
+  // Catch all handler: send back React's index.html file for any non-API routes
+  app.get('*', (req, res) => {
+    // Don't serve index.html for API routes
+    if (req.path.startsWith('/api')) {
+      return res.status(404).json({ error: 'API endpoint not found' });
+    }
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
+  });
+}
+
 // WebSocket connection for real-time updates
 io.on('connection', (socket) => {
   console.log('Client connected:', socket.id);
@@ -262,5 +283,9 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Modbus Monitoring Server running on port ${PORT}`);
-  console.log(`Access the dashboard at http://localhost:${PORT}`);
+  if (process.env.NODE_ENV === 'production') {
+    console.log(`Production mode: Serving React app`);
+  } else {
+    console.log(`Development mode: React app runs separately on port 3000`);
+  }
 });
